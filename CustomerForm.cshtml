@@ -1,0 +1,327 @@
+@model Loan_Management.ViewModels.CustomerFormViewModel
+
+@{
+    ViewBag.Title = "CustomerForm";
+    int id = 0;
+}
+
+
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.js">
+    function callChangefunc(val){
+       @id=val;
+    }
+ </script>
+
+
+<h2>CustomerForm</h2>
+
+@using (Html.BeginForm("CustomerForm", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4 style="padding-top:50px; padding-bottom:50px">Please fill the following details to raise a new request</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="container">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <button class="btn btn-primary" style=" background-color: #F07979; border: none;color: white; padding: 10px 50px; margin-right:10px;text-align: center;
+                                text-decoration: none;display: inline-block; font-size: 16px" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Customer Basic Details
+                        </button>
+                    </h4>
+                </div>
+                <div id="collapseExample" class="panel-collapse collapse">
+                    <div class="form-group">
+                        <br />
+                        @Html.LabelFor(model => model.CustomerId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CustomerId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Aadhar_number, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Aadhar_number, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Aadhar_number, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Pan_number, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Pan_number, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Pan_number, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Pincode, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <button class="btn btn-primary" style="background-color: #F07979;border: none; color: white; padding: 10px 68px;margin-right: 10px;text-align: center; text-decoration: none;
+        display: inline-block;font-size: 16px" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                            Document Upload
+                        </button>
+                    </h4>
+                </div>
+                <div id="collapseExample2" class="panel-collapse collapse">
+                    <label>&emsp; Aadhar Upload</label>
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.AadharUpload, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+                        <div class="col-md-10">
+                            <input type="file" name="Files" value="Upload" required />
+                            @*@Html.ValidationMessageFor(model => model.AadharUpload, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+
+                    <label>&emsp;PAN Upload</label>
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.PanUpload, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+                        <div class="col-md-10">
+                            <input type="file" name="Files" value="Upload" required />
+                            @*  @Html.ValidationMessageFor(model => model.PanUpload, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <button class="btn btn-primary" style="background-color: #F07979; border: none; color: white; padding: 10px 73px; margin-right: 10px;text-align: center;
+        text-decoration: none; display: inline-block;font-size: 16px" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                            Collateral Details
+                        </button>
+                    </h4>
+                </div>
+                <div id="collapseExample3" class="panel-collapse collapse">
+                    <div class="form-group">
+                        <br />
+                        @Html.LabelFor(model => model.CollateralType, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.CollateralType, new List<SelectListItem>
+    {
+                    new SelectListItem() {Text = "Fixed Deposit", Value="Fixed Deposit"},
+                    new SelectListItem() {Text = "Property", Value="Property"} }, "Select the type of Collateral", new { htmlAttributes = new { @class = "form-control", @onchange = "callChangefunc(this.Value)" } })
+                            @Html.ValidationMessageFor(model => model.CollateralType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @if (id == 1)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Fd_AccountNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Fd_AccountNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Fd_AccountNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Fd_BankName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Fd_BankName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Fd_BankName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FdAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.FdAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FdAmount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    }
+
+                    else if (id == 2)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Property_Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Property_Address, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Property_Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Property_Evaluation, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Property_Evaluation, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Property_Evaluation, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Fd_AccountNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Fd_AccountNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Fd_AccountNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Fd_BankName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Fd_BankName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Fd_BankName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FdAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.FdAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FdAmount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Property_Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Property_Address, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Property_Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Property_Evaluation, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Property_Evaluation, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Property_Evaluation, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <button class="btn btn-primary" style=" background-color: #F07979; border: none; color: white;padding: 10px 90px; margin-right: 10px; text-align: center; text-decoration: none;
+        display: inline-block;font-size: 16px" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
+                            Loan Details
+                        </button>
+                    </h4>
+                </div>
+                <div id="collapseExample4" class="panel-collapse collapse">
+                    <div class="form-group">
+                        <br />
+                        @Html.LabelFor(model => model.LoanType, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.LoanType, new List<SelectListItem>
+    {
+                        new SelectListItem() {Text = "Car Loan", Value="Car Loan"},
+                        new SelectListItem() {Text = "Home Loan", Value="Home Loan"},
+                        new SelectListItem() {Text = "Personal Loan", Value="Personal Loan"} }, "Select the type of loan", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LoanType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LoanAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LoanAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LoanAmount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" name="command" value="Submit" class="btn btn-default" style="background-color: #4CAF50;
+  border: none;color: white;padding: 10px 30px;margin-right:10px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px" ; />
+                    <input type="submit" name="command" value="Save" class="btn btn-default" style="background-color:dodgerblue;
+  border: none;color: white;padding: 10px 30px;margin-right:10px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px" ; />
+                    <input type="reset" value="Reset" class="btn btn-default" style="background-color: red;
+  border: none;color: white;padding: 10px 30px;margin-right:10px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px" ; />
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    @if (ViewBag.Message != null)
+    {
+        <h2 style="color:green; padding-top:50px; padding-bottom:50px">@ViewBag.Message</h2>
+    }
+</div>
+            }
+            <script>
+                $(function () {
+                    $("#accordion").accordion();
+                });
+            </script>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/jqueryui")
+            @Scripts.Render("~/bundles/jqueryval")
+
