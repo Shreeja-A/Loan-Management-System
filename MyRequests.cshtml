@@ -1,0 +1,92 @@
+@model IEnumerable<Loan_Management.Models.Loan>
+
+@{
+    ViewBag.Title = "My Requests";
+}
+
+<h2 style="padding-top:50px; padding-bottom:50px">My Requests</h2>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    tr {
+        border: 1px ridge lightgray;
+        border-left: none;
+        border-right: none;
+    }
+    th {
+        padding-top: 30px;
+        padding-right: 100px;
+        padding-bottom: 30px;
+    }
+        th:first-child {
+            padding-left: 30px;
+        }
+    tr:first-child {
+        border-top: none;
+    }
+    td:first-child {
+        padding-left: 30px;
+    }
+    tr:last-child {
+        border-bottom: none;
+    }
+    td {
+        padding-bottom: 30px;
+        padding-right: 30px;
+        padding-top: 30px;
+    }
+</style>
+@if (Model.Count() > 0)
+{
+
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CollateralType)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.LoanType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CollateralType)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoanType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoanAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Customer", new { id = item.Id }, null)
+
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <hr/>
+    <h3 style="text-align:center; padding-top:50px;padding-bottom:700px">You have not raised any Requests. To Raise new Requests go to New Request Page </h3>
+}
